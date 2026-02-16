@@ -99,8 +99,7 @@ class PagerDuty {
       total = content.total;
 
       items = items.filter((item, _i) => {
-        // only add oncalls with a schedule
-        return item.schedule;
+        return item.escalation_policy?.id !== undefined;
       });
 
       if (options.params.offset >= total) {
